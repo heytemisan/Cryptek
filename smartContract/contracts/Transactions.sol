@@ -16,4 +16,16 @@ contract Transactions {
     }
 
     TransferStruct[] transactions;
+
+    function addToBlockchain () public {
+        
+    }
+
+    function getAllTransactions () public view returns (TransferStruct [] memory){
+        //returns transactions;
+    }
+
+    function getTransactionCount () public view returns (uint256) {
+        //returns transactionCount;
+    }
 }
