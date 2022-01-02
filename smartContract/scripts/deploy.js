@@ -8,11 +8,14 @@ const main = async () => {
   console.log("Transactions deployed to:", transaction.address);
 }
 
-const runmain = async () => {
+const runMain = async () => {
   try {
     await main();
-    process.exit()
+    process.exit(0)
   } catch (error) {
-    
+    console.error(error);
+    process.exit(1);
   }
 }
+
+runmain();
