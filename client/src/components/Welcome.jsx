@@ -5,6 +5,11 @@ import {BsInfoCircle} from 'react-icons/bs';
 import { Loader } from './';
 
 const Welcome = () => {
+
+    const connectWallet = () => {
+        alert('hello');
+    }
+
     return (
         <div className='flex w-full justify-center items-center'>
             <div className="flex md:flex-row flex-col items-start justify-between md:p-20 py-12 px-4">
@@ -12,6 +17,18 @@ const Welcome = () => {
                     <h1 className="text-2xl sm:text-5xl text-white text-gradient py-1">
                         Send Crypto <br /> across the world
                     </h1>
+                    <p className="text-left mt-5 text-white font-light md:w-9/12 w-11/12 text-base">
+                        Explore the crypto world. Buy and sell cryptocurrency easily on Cryptok.
+                    </p>
+                    <button
+                    type='button'
+                    onClick={connectWallet}
+                    className='flex flex-row justify-center my-5 bg-[#2952e3] p-3 rounded-full cursor-pointer hover:bg-[#2546bd]'
+                    >
+                        <p className="text-white text-base font-semibold">
+                            Connect Wallet
+                        </p>
+                    </button>
                 </div>
             </div>
         </div>
