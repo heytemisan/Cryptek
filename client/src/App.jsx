@@ -5,7 +5,7 @@ function App() {
 
   return (
     <div className="min-h-screen">
-      <div className="gradient-bg-welcome">
+      <div className="from-blue-600 via-teal-500 to-purple-500 bg-gradient-to-r w-full h-64 block">
         <Navbar/>
         <Welcome/>
       </div>
