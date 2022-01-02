@@ -86,6 +86,19 @@ const Welcome = () => {
                         <Input placeholder='Amount (ETH)' name="amount" type="number" handleChange={() => {}}/>
                         <Input placeholder='Keyword (GIF)' name="keyword" type="text" handleChange={() => {}}/>
                         <Input placeholder='Enter Message' name="message" type="text" handleChange={() => {}}/>
+                        <div className="h-[1px] w-full bg-gray-400 my-2"/>
+
+                        {false ? (
+                            <Loader/>
+                        ): (
+                            <button
+                                type="button"
+                                onClick={handleSubmit}
+                                className="text-white"
+                            >
+                            Send Now
+                            </button>
+                        )}
                     </div>
                 </div>
             </div>
