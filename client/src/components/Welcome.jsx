@@ -23,6 +23,10 @@ const Welcome = () => {
         alert('hello');
     }
 
+    const handleSubmit = () => {
+        alert(`'what's up`);
+    }
+
     return (
         <div className='flex w-full justify-center items-center'>
             <div className="flex md:flex-row flex-col items-start justify-between md:p-20 py-12 px-4">
