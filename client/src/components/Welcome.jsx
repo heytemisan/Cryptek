@@ -38,10 +38,10 @@ const Welcome = () => {
                         <div className={commonStyles}>
                             Security
                         </div>
-                        <div className={`rounded-tr-2xl ${commonStyles}`}>
+                        <div className={`rounded-tr-2xr ${commonStyles}`}>
                             Ethereum
                         </div>
-                        <div className={`rounded-bl-2xl ${commonStyles}`}>
+                        <div className={`rounded-bl-2xr ${commonStyles}`}>
                             Web 3.0
                         </div>
                         <div className={commonStyles}>
@@ -52,6 +52,17 @@ const Welcome = () => {
                         </div>
                     </div>
                 </div>
+
+                <div className="flex flex-col flex-1 items-center justify-start w-full md:mt-0 mt-10">
+                    <div className="p-3 justify-end items-start flex-col rounded-xl h-50 sm:w-72 w-full my-5 eth-card white-glassmorpism">
+                        <div className="flex justify-between flex-col w-full h-full">
+                            <div className="flex justify-between items-start">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     )
