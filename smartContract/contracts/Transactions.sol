@@ -18,7 +18,7 @@ contract Transactions {
     TransferStruct[] transactions;
 
     function addToBlockchain () public {
-        
+        transactionCount += 1;
     }
 
     function getAllTransactions () public view returns (TransferStruct [] memory){
