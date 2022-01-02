@@ -62,7 +62,7 @@ const Welcome = () => {
                                 </div>
                                 <BsInfoCircle fontSize={17} color='#fff'/>
                             </div>
-                            <p className="text-white font-light text-sm">
+                            <p className="text-white font-light text-sm mt-11">
                                 0psiwj...hfzld 
                             </p>
                             <p className="text-white font-semibold text-lg mt-1">
@@ -71,7 +71,7 @@ const Welcome = () => {
                         </div>
                     </div>
                 </div>
-
+                <div className="p-5 sm:w-96 w-full flex flex-col justify-start items-center blue-glassmorphism"></div>
             </div>
         </div>
     )
