@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {HiMenuAlt4} from 'react-icons/hi';
 import {AiOutlineClose} from 'react-icons/ai';
 import logo from '../../images/logo.png';
@@ -13,7 +13,7 @@ const NavbarItem = ({title, classProps}) => {
 
 const Navbar = () => {
 
-    const [toggleMenu, setToggleMenu] = React.useState(false);
+    const [toggleMenu, setToggleMenu] = useState(false);
 
     return (
         <nav className='w-full flex md:justify-center justify-between items-center p-4'>
@@ -32,6 +32,16 @@ const Navbar = () => {
                 {toggleMenu ? 
                 <AiOutlineClose fontSize={28} className='text-white md:hidden cursor-pointer' onClick={() => setToggleMenu(false)}/> : 
                 <HiMenuAlt4 fontSize={28} className='text-white md:hidden cursor-pointer' onClick={() => setToggleMenu(true)}/>}
+                {toggleMenu && (
+                    <ul>
+                        <li className="text-xl w-full my-2">
+                            <AiOutlineClose onClick={() => setToggleMenu(false)}/>
+                        </li>
+                        {["Market", "Exchange", "Tutorials", "Wallets"].map((item, index)=> (
+                    <NavbarItem key={item + index} title={item} classProps="my-2 text-lg"/>
+                    ))}
+                    </ul>
+                )}
             </div>
         </nav>
     )
