@@ -19,7 +19,7 @@ const getEthereumContract = () => {
 
 export const TransactionProvider = ({children})=> {
     
-    const [currentAccount, setCurrentAccount] = useState()
+    const [currentAccount, setCurrentAccount] = useState('')
     const [formData, setFormData] = useState({addressTo:'', amount:'', keyword:'',message: ''});
     //for interecting with the input
     const handleChange =(e, name)=> {
@@ -54,7 +54,14 @@ export const TransactionProvider = ({children})=> {
     }
 
     const sendTransaction = async ()=> {
+        try {
+            if (!ethereum) return alert("Wallet is not connected, please install metamask");
 
+            //get data from the form
+        } catch (error) {
+            console.log(error);
+            throw new Error("No ethereum object.")
+        }
     }
 
     useEffect(() => {
@@ -62,7 +69,7 @@ export const TransactionProvider = ({children})=> {
     },[])
 
     return (
-        <TransactionContext.Provider value={{connectWallet, currentAccount, formData, setFormData, handleChange}}>
+        <TransactionContext.Provider value={{connectWallet, currentAccount, formData, setFormData, handleChange, sendTransaction}}>
             {children}
         </TransactionContext.Provider>
     )
