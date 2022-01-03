@@ -59,7 +59,7 @@ export const TransactionProvider = ({children})=> {
             //send ethereum transaction
             const parsedAmount = ethers.utils.parseEther(amount);
             await ethereum.request({
-                method: currentAccount,
+                method: 'eth_sendTransaction',
                 param: [{
                     from: currentAccount,
                     to:addressTo,
