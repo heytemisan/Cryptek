@@ -10,11 +10,7 @@ const getEthereumContract = () => {
     const signer = provider.getSigner();
     const transactionContract = new ethers.Contract(contractAddress, contractABI, signer);
 
-    console.log({
-        provider,
-        signer,
-        transactionContract
-    });
+    return transactionContract;
 }
 
 export const TransactionProvider = ({children})=> {
@@ -34,7 +30,7 @@ export const TransactionProvider = ({children})=> {
             if (accounts.length) {
                 setCurrentAccount(accounts[0]);
             } else {
-                console.log('No accounts found');
+                console.log('No account found');
             }
         } catch (error) {
             console.log(error);
@@ -57,7 +53,11 @@ export const TransactionProvider = ({children})=> {
         try {
             if (!ethereum) return alert("Wallet is not connected, please install metamask");
             const {addressTo, amount, keyword, message}= formData;
-            getEthereumContract();
+
+            const transactionContract = getEthereumContract();
+
+            //send ethereum transaction
+            
             //get data from the form
         } catch (error) {
             console.log(error);
