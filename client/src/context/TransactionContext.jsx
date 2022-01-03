@@ -56,7 +56,8 @@ export const TransactionProvider = ({children})=> {
     const sendTransaction = async ()=> {
         try {
             if (!ethereum) return alert("Wallet is not connected, please install metamask");
-
+            const {addressTo, amount, keyword, message}= formData;
+            getEthereumContract();
             //get data from the form
         } catch (error) {
             console.log(error);
