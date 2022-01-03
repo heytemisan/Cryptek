@@ -3,7 +3,7 @@ const main = async () => {
   const Transactions = await hre.ethers.getContractFactory("Transactions");
   const transaction = await Transactions.deploy();
 
-  await greeter.deployed();
+  await transaction.deployed();
 
   console.log("Transactions deployed to:", transaction.address);
 }
