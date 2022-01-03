@@ -57,7 +57,16 @@ export const TransactionProvider = ({children})=> {
             const transactionContract = getEthereumContract();
 
             //send ethereum transaction
-            
+            const parsedAmount = ethers.utils.parseEther(amount);
+            await ethereum.request({
+                method: currentAccount,
+                param: [{
+                    from: currentAccount,
+                    to:addressTo,
+                    gas:'0x5208', //21000 GWEI
+                    value: parsedAmount._hex, //0.0001
+                }]
+            })
             //get data from the form
         } catch (error) {
             console.log(error);
