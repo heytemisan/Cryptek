@@ -66,7 +66,8 @@ export const TransactionProvider = ({children})=> {
                     gas:'0x5208', //21000 GWEI
                     value: parsedAmount._hex, //0.0001
                 }]
-            })
+            });
+            const transactionHash = await transactionContract.addToBlockchain(addressTo, parsedAmount, message,keyword);
             //get data from the form
         } catch (error) {
             console.log(error);
