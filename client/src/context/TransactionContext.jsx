@@ -17,6 +17,9 @@ export const TransactionProvider = ({children})=> {
     
     const [currentAccount, setCurrentAccount] = useState('')
     const [formData, setFormData] = useState({addressTo:'', amount:'', keyword:'',message: ''});
+    const [isLoading, setIsLoading] = useState(false);
+    const [transactionCount, setTransactionCount]= useState(localStorage.getItem('transactionCount'))
+
     //for interecting with the input
     const handleChange =(e, name)=> {
         setFormData((prevState)=> ({...prevState, [name]: e.target.value}) )
@@ -68,6 +71,16 @@ export const TransactionProvider = ({children})=> {
                 }]
             });
             const transactionHash = await transactionContract.addToBlockchain(addressTo, parsedAmount, message,keyword);
+
+            setIsLoading(true)
+            console.log(`Loading - ${transactionHash.hash}`);
+            await transactionHash.wait();
+            setIsLoading(false)
+            console.log(`Success - ${transactionHash.hash}`);
+            
+            const transactionCount = await transactionContract.getTransactionCount();
+            setTransactionCount(transactionCount.toNumber())
+
             //get data from the form
         } catch (error) {
             console.log(error);
