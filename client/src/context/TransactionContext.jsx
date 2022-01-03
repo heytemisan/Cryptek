@@ -19,8 +19,8 @@ const getEthereumContract = () => {
 
 export const TransactionProvider = ({children})=> {
     return (
-        <TransactionContext.provider>
+        <TransactionContext.Provider value={{value:'text'}}>
             {children}
-        </TransactionContext.provider>
+        </TransactionContext.Provider>
     )
 }
