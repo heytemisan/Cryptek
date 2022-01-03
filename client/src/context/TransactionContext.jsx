@@ -9,7 +9,6 @@ const getEthereumContract = () => {
     const provider = new ethers.providers.Web3Provider(ethereum);
     const signer = provider.getSigner();
     const transactionContract = new ethers.Contract(contractAddress, contractABI, signer);
-
     return transactionContract;
 }
 
@@ -22,10 +21,10 @@ export const TransactionProvider = ({children})=> {
 
     //for interecting with the input
     const handleChange =(e, name)=> {
-        setFormData((prevState)=> ({...prevState, [name]: e.target.value}) )
+        setFormData((prevState)=> ({...prevState, [name]: e.target.value}) );
     }
 
-    const checkIfWalletIsConnected = async() => {
+    const checkIfWalletIsConnect = async() => {
 
         try {
             if (!ethereum) return alert("Wallet is not connected, please install metamask");
@@ -52,44 +51,46 @@ export const TransactionProvider = ({children})=> {
         }
     }
 
-    const sendTransaction = async ()=> {
-        try {
-            if (!ethereum) return alert("Wallet is not connected, please install metamask");
-            const {addressTo, amount, keyword, message}= formData;
+        const sendTransaction = async () => {
+            try {
+            if (ethereum) {
+                const { addressTo, amount, keyword, message } = formData;
 
-            const transactionContract = getEthereumContract();
-
-            //send ethereum transaction
-            const parsedAmount = ethers.utils.parseEther(amount);
-            await ethereum.request({
-                method: 'eth_sendTransaction',
-                param: [{
+                //send ethereum transaction
+                const parsedAmount = ethers.utils.parseEther(amount);      
+                await ethereum.request({
+                method: "eth_sendTransaction",
+                params: [{
                     from: currentAccount,
-                    to:addressTo,
-                    gas:'0x5208', //21000 GWEI
+                    to: addressTo,
+                    gas: "0x5208",//21000 GWEI
                     value: parsedAmount._hex, //0.0001
-                }]
-            });
-            const transactionHash = await transactionContract.addToBlockchain(addressTo, parsedAmount, message,keyword);
-
-            setIsLoading(true)
-            console.log(`Loading - ${transactionHash.hash}`);
-            await transactionHash.wait();
-            setIsLoading(false)
-            console.log(`Success - ${transactionHash.hash}`);
-            
-            const transactionCount = await transactionContract.getTransactionCount();
-            setTransactionCount(transactionCount.toNumber())
-
-            //get data from the form
-        } catch (error) {
+                }],
+                });
+        
+                const transactionHash = await transactionsContract.addToBlockchain(addressTo, parsedAmount, message, keyword);
+        
+                setIsLoading(true);
+                console.log(`Loading - ${transactionHash.hash}`);
+                await transactionHash.wait();
+                console.log(`Success - ${transactionHash.hash}`);
+                setIsLoading(false);
+        
+                const transactionsCount = await transactionsContract.getTransactionCount();
+        
+                setTransactionCount(transactionsCount.toNumber());
+            } else {
+                console.log("No ethereum object");
+            }
+            } catch (error) {
             console.log(error);
-            throw new Error("No ethereum object.")
-        }
-    }
+        
+            throw new Error("No ethereum object");
+            }
+        };
 
     useEffect(() => {
-        checkIfWalletIsConnected();
+        checkIfWalletIsConnect();
     },[])
 
     return (
