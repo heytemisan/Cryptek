@@ -79,7 +79,7 @@ const Welcome = () => {
                                 </div>
                                 <BsInfoCircle fontSize={17} color='#fff'/>
                             </div>
-                            <p className="text-white font-light text-sm mt-11">
+                            <p className="font-light text-sm mt-11 text-gradient">
                                 {shortenAddress(currentAccount)}
                             </p>
                             <p className="text-white font-semibold text-lg mt-1">
