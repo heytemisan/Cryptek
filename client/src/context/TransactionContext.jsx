@@ -24,8 +24,18 @@ export const TransactionProvider = ({children})=> {
         setFormData((prevState)=> ({...prevState, [name]: e.target.value}) );
     }
 
-    const checkIfWalletIsConnect = async() => {
+    const getAllTransactions = async()=> {
+        try{
+            if (!ethereum) return alert("please install metamask");
+            const transactionContract = getEthereumContract();
+            const availableTransactions = await transactionContract.getAllTransactions();
+            console.log(availableTransactions);
+        }catch (error) {
+            console.log(error );
+        }
+    }
 
+    const checkIfWalletIsConnect = async() => {
         try {
             if (!ethereum) return alert("Wallet is not connected, please install metamask");
             const accounts = await ethereum.request({method: 'eth_accounts'});
@@ -34,6 +44,18 @@ export const TransactionProvider = ({children})=> {
             } else {
                 console.log('No account found');
             }
+        } catch (error) {
+            console.log(error);
+            throw new Error("No ethereum object.")
+        }
+    }
+
+    const checkIfTransactionsExist = async() => {
+        try {
+            const transactionContract = getEthereumContract();
+            const transactionsCount = await transactionsContract.getTransactionCount();
+
+            window.localStorage.setItem('transactionCount', transactionsCount)
         } catch (error) {
             console.log(error);
             throw new Error("No ethereum object.")
@@ -55,7 +77,7 @@ export const TransactionProvider = ({children})=> {
             try {
             if (ethereum) {
                 const { addressTo, amount, keyword, message } = formData;
-
+                const transactionContract = getEthereumContract();
                 //send ethereum transaction
                 const parsedAmount = ethers.utils.parseEther(amount);      
                 await ethereum.request({
@@ -91,6 +113,7 @@ export const TransactionProvider = ({children})=> {
 
     useEffect(() => {
         checkIfWalletIsConnect();
+        checkIfTransactionsExist();
     },[])
 
     return (
