@@ -15,7 +15,7 @@ const TransactionCard = ({addressTo, addressFrom, timestamp, keyword, amount, ur
             flex-col p-3 rounded-md
             hover:shadow-2xl
         ">
-            <div className="flex flex-col items-center w-full mt-3">
+            <div className="display-flex flex-col items-center w-full mt-3">
                 <div className="w-full mb-6 p-2">
                     <a href={`https://ropsten.etherscan.io/address/${addressFrom}`} target="_blank" rel="noopener noreferrer">
                         <p className="text-white text-base">
@@ -30,6 +30,14 @@ const TransactionCard = ({addressTo, addressFrom, timestamp, keyword, amount, ur
                     <p className="text-white text-base">
                         Amount: {amount} ETH
                     </p>
+                    {message && (
+                        <>
+                            <br />
+                            <p className="text-white text-base">
+                                Message: {message}
+                            </p>
+                        </>
+                    )}
                 </div>
             </div>
         </div>
@@ -52,7 +60,7 @@ const Transactions = () => {
                     </h3>
                 )}
             </div>
-            <div className="flex flex-wrap justify-center items-center mt-10 text-white">
+            <div className="flex flex-wrap justify-center items-center mt-10">
                 {dummyData.reverse().map((transaction, i)=> (
                     <TransactionCard 
                         key={i}
