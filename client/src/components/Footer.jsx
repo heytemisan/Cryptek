@@ -31,6 +31,9 @@ const Footer = () => {
                     Temyicy@gmail.com
                 </p>
             </div>
+            <div className="sm:w-[90%] h- w-full bg-gray-400">
+
+            </div>
         </div>
     )
 }
