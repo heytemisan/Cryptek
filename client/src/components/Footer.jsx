@@ -8,7 +8,7 @@ const Footer = () => {
                 <div className="flex flex-[0.5] justify-center items-center">
                     <img src={logo} alt="logo" className='w-32'/>
                 </div>
-                <div className="flex-1 justify-evenly items-center flex-wrap sm:mt-0 mt-5 w-full">
+                <div className="flex flex-1 justify-evenly items-center flex-wrap sm:mt-0 mt-5 w-full">
                     <p className="text-white text-base text-center mx-3 cursor-pointer">
                         Market
                     </p>
@@ -22,6 +22,14 @@ const Footer = () => {
                         Wallet
                     </p>
                 </div>
+            </div>
+            <div className="flex justify-center items-center flex-col mt-5">
+                <p className="text-white text-sm text-center">
+                    Come join us
+                </p>
+                <p className="text-white text-sm text-center">
+                    Temyicy@gmail.com
+                </p>
             </div>
         </div>
     )
