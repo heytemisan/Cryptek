@@ -3,7 +3,7 @@ import {TransactionContext} from '../context/TransactionContext';
 import dummyData from '../utils/dummyData'; 
 import {shortenAddress} from '../utils/shortenAddress';
 
-const TransactionCard = ({addressTo, addressFrom, timestamp, keyword, amount, url}) => {
+const TransactionCard = ({addressTo, addressFrom, timestamp, message, keyword, amount, url}) => {
     return (
         <div className="
             bg-[#181918] 
@@ -30,18 +30,18 @@ const TransactionCard = ({addressTo, addressFrom, timestamp, keyword, amount, ur
                     <p className="text-white text-base">
                         Amount: {amount} ETH
                     </p>
-                    {/* {message && (
+                    {message && (
                         <>
                             <br />
                             <p className="text-white text-base">
                                 Message: {message}
                             </p>
                         </>
-                    )} */}
+                    )}
                     <div className="bg-black p-3 px-5 w-max rounded-3xl mt-5 shadow-2xl">
-                        <div className="text-[#37c7da] font-bold">
+                        <p className="text-[#37c7da] font-bold">
                             {timestamp}
-                        </div>
+                        </p>
                     </div>
                 </div>
             </div>
@@ -56,7 +56,7 @@ const Transactions = () => {
         <div className="flex w-full justify-center items-center 2xl:px-20 gradient-bg-transactions">
             <div className="flex flex-col md:p-12 py-12 px-4">
                 {currentAccount ? (
-                    <h3 className="text-white text-3xl text-center my-2">
+                    <h3 className="text-gradient text-3xl text-center my-2">
                         Latest Transactions
                     </h3>
                 ): (
