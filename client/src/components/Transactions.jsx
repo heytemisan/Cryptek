@@ -16,12 +16,20 @@ const TransactionCard = ({addressTo, addressFrom, timestamp, keyword, amount, ur
             hover:shadow-2xl
         ">
             <div className="flex flex-col items-center w-full mt-3">
-                <div className="display-flex justifu-start w-full mb-6 p-2">
+                <div className="w-full mb-6 p-2">
                     <a href={`https://ropsten.etherscan.io/address/${addressFrom}`} target="_blank" rel="noopener noreferrer">
                         <p className="text-white text-base">
-                            
+                            From: {shortenAddress(addressFrom)}
                         </p>
                     </a>
+                    <a href={`https://ropsten.etherscan.io/address/${addressTo}`} target="_blank" rel="noopener noreferrer">
+                        <p className="text-white text-base">
+                            To: {shortenAddress(addressTo)}
+                        </p>
+                    </a>
+                    <p className="text-white text-base">
+                        Amount: {amount} ETH
+                    </p>
                 </div>
             </div>
         </div>
