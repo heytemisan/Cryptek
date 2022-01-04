@@ -30,14 +30,19 @@ const TransactionCard = ({addressTo, addressFrom, timestamp, keyword, amount, ur
                     <p className="text-white text-base">
                         Amount: {amount} ETH
                     </p>
-                    {message && (
+                    {/* {message && (
                         <>
                             <br />
                             <p className="text-white text-base">
                                 Message: {message}
                             </p>
                         </>
-                    )}
+                    )} */}
+                    <div className="bg-black p-3 px-5 w-max rounded-3xl mt-5 shadow-2xl">
+                        <div className="text-[#37c7da] font-bold">
+                            {timestamp}
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
