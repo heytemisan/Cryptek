@@ -16,7 +16,9 @@ const useFetch =({keyword})=> {
     useEffect(() => {
         //if there is a keyword, we will call the fetchGifs method
         if(keyword) fetchGifs(); 
-        return () => {
-        }
-    }, [keyword])
+    }, [keyword]);
+
+    return gifUrl;
 }
+
+export default useFetch;
