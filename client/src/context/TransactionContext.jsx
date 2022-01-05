@@ -35,7 +35,7 @@ export const TransactionProvider = ({children})=> {
         }
     }
 
-    const checkIfWalletIsConnect = async() => {
+    const checkIfWalletIsConnected = async() => {
         try {
             if (!ethereum) return alert("Wallet is not connected, please install metamask");
             const accounts = await ethereum.request({method: 'eth_accounts'});
@@ -67,6 +67,7 @@ export const TransactionProvider = ({children})=> {
     const connectWallet = async() => {
         try {
             if (!ethereum) return alert("Wallet is not connected, please install metamask");
+            
             const accounts = await ethereum.request({method: 'eth_requestAccounts'});
             setCurrentAccount(accounts[0]);
         } catch (error) {
@@ -114,7 +115,7 @@ export const TransactionProvider = ({children})=> {
         };
 
     useEffect(() => {
-        checkIfWalletIsConnect();
+        checkIfWalletIsConnected();
         checkIfTransactionsExist();
     },[])
 
