@@ -14,6 +14,7 @@ const getEthereumContract = () => {
 }
 
 export const TransactionProvider = ({children})=> {   
+    // const [connectedAccount, setConnectedAccount]= useState('')
     const [currentAccount, setCurrentAccount] = useState('')
     const [formData, setFormData] = useState({addressTo:'', amount:'', keyword:'',message: ''});
     const [isLoading, setIsLoading] = useState(false);
@@ -67,7 +68,7 @@ export const TransactionProvider = ({children})=> {
     const connectWallet = async() => {
         try {
             if (!ethereum) return alert("Wallet is not connected, please install metamask");
-            
+
             const accounts = await ethereum.request({method: 'eth_requestAccounts'});
             setCurrentAccount(accounts[0]);
         } catch (error) {
