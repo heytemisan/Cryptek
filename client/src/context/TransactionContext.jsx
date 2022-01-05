@@ -6,6 +6,7 @@ export const TransactionContext = React.createContext();
 const { ethereum } = window;
 
 const getEthereumContract = () => {
+    //pass in ethereum windows object
     const provider = new ethers.providers.Web3Provider(ethereum);
     const signer = provider.getSigner();
     const transactionContract = new ethers.Contract(contractAddress, contractABI, signer);
