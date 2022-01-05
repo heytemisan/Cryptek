@@ -1,4 +1,4 @@
-import React, {useContext} from 'react'
+import React, {useContext} from 'react';
 import { AiFillAlipayCircle } from 'react-icons/ai'
 import {SiEthereum} from 'react-icons/si';
 import {BsInfoCircle} from 'react-icons/bs';
