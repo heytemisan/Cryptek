@@ -11,9 +11,11 @@ const runMain = async () => {
   try {
     await main();
     process.exit(0);
+    //process was successful
   } catch (error) {
     console.error(error);
     process.exit(1);
+    //process was interrupted
   }
 };
 
