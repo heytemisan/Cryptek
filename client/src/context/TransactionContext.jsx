@@ -47,18 +47,19 @@ export const TransactionProvider = ({children})=> {
             }
         } catch (error) {
             console.log(error);
-            throw new Error("No ethereum object.")
+            // throw new Error("No ethereum object.")
         }
     }
 
     const checkIfTransactionsExist = async() => {
         try {
-            const transactionContract = getEthereumContract();
-            const transactionsCount = await transactionsContract.getTransactionCount();
-
-            window.localStorage.setItem('transactionCount', transactionsCount)
+            if (ethereum) {
+                const transactionContract = getEthereumContract();
+                const transactionsCount = await transactionsContract.getTransactionCount();   
+                window.localStorage.setItem('transactionCount', transactionsCount)
+            }
         } catch (error) {
-            console.log(error);
+            console.log(error)
             throw new Error("No ethereum object.")
         }
     }
