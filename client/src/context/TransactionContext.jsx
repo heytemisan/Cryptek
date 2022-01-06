@@ -14,7 +14,7 @@ const getEthereumContract = () => {
 }
 
 export const TransactionProvider = ({children})=> {   
-    const [currentAccount, setCurrentAccount] = useState('')
+    const [currentAccount, setCurrentAccount] = useState('') //check if current account is con  
     const [formData, setFormData] = useState({addressTo:'', amount:'', keyword:'',message: ''});
     const [isLoading, setIsLoading] = useState(false);
     const [transactionCount, setTransactionCount]= useState(localStorage.getItem('transactionCount'))
@@ -51,6 +51,18 @@ export const TransactionProvider = ({children})=> {
         }
     }
 
+    const connectWallet = async() => {
+        try {
+            if (!ethereum) return alert("Wallet is not connected, please install metamask");
+            //request accounts to connect;
+            const accounts = await ethereum.request({method: 'eth_requestAccounts'});
+            setCurrentAccount(accounts[0]);
+        } catch (error) {
+            console.log(error);
+            throw new Error("No ethereum object.")
+        }
+    }
+
     const checkIfTransactionsExist = async() => {
         try {
             if (ethereum) {
@@ -64,18 +76,7 @@ export const TransactionProvider = ({children})=> {
         }
     }
 
-    const connectWallet = async() => {
-        try {
-            if (!ethereum) return alert("Wallet is not connected, please install metamask");
-
-            const accounts = await ethereum.request({method: 'eth_requestAccounts'});
-            setCurrentAccount(accounts[0]);
-        } catch (error) {
-            console.log(error);
-            throw new Error("No ethereum object.")
-        }
-    }
-
+    
         const sendTransaction = async () => {
             try {
             if (ethereum) {
@@ -115,6 +116,7 @@ export const TransactionProvider = ({children})=> {
         };
 
     useEffect(() => {
+        //after words call all functions
         checkIfWalletIsConnected();
         checkIfTransactionsExist();
     },[])
