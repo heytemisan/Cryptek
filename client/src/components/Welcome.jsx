@@ -25,8 +25,8 @@ const Welcome = () => {
     const handleSubmit = (e) => {
         const {addressTo, amount, keyword, message} = formData;
         e.preventDefault(); //prevent page from reloading
-        if(!addressTo || !amount || !keyword || !message) return;
-        sendTransaction();
+        if(!addressTo || !amount || !keyword || !message) return;//prevent send;
+        sendTransaction();//return sendTransaction function - TransactionContext;
     }
 
     return (

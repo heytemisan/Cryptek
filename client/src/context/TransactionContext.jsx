@@ -19,7 +19,8 @@ export const TransactionProvider = ({children})=> {
     const [isLoading, setIsLoading] = useState(false);
     const [transactionCount, setTransactionCount]= useState(localStorage.getItem('transactionCount'))
 
-    //for interecting with the input
+    //for interecting with the input. 
+    //nb, this dynamically goes along with the form
     const handleChange =(e, name)=> {
         setFormData((prevState)=> ({...prevState, [name]: e.target.value}) );
     }
@@ -78,6 +79,7 @@ export const TransactionProvider = ({children})=> {
 
     
         const sendTransaction = async () => {
+            //basically for sending and storing transactions
             try {
             if (ethereum) {
                 const { addressTo, amount, keyword, message } = formData;
@@ -116,7 +118,7 @@ export const TransactionProvider = ({children})=> {
         };
 
     useEffect(() => {
-        //after words call all functions
+        //afterwards call all functions
         checkIfWalletIsConnected();
         checkIfTransactionsExist();
     },[])
