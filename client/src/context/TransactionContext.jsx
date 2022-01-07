@@ -96,7 +96,8 @@ export const TransactionProvider = ({children})=> {
                     value: parsedAmount._hex, //0.0001
                 }],
                 });
-        
+                
+                //store transaction 
                 const transactionHash = await transactionsContract.addToBlockchain(addressTo, parsedAmount, message, keyword);
         
                 setIsLoading(true);
