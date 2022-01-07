@@ -82,16 +82,17 @@ export const TransactionProvider = ({children})=> {
             //basically for sending and storing transactions
             try {
             if (ethereum) {
-                const { addressTo, amount, keyword, message } = formData;
+                const { addressTo, amount, keyword, message } = formData;//access
                 const transactionContract = getEthereumContract();
-                //send ethereum transaction
+                console.log(transactionContract);
+                //calculate curent transactions
                 const parsedAmount = ethers.utils.parseEther(amount);      
                 await ethereum.request({
                 method: "eth_sendTransaction",
                 params: [{
                     from: currentAccount,
                     to: addressTo,
-                    gas: "0x5208",//21000 GWEI
+                    gas: "0x5208",//21000 GWEI currently ₦28.21
                     value: parsedAmount._hex, //0.0001
                 }],
                 });
