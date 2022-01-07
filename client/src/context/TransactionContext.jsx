@@ -9,8 +9,8 @@ const getEthereumContract = () => {
     //pass in ethereum windows object
     const provider = new ethers.providers.Web3Provider(ethereum);
     const signer = provider.getSigner();
-    const transactionContract = new ethers.Contract(contractAddress, contractABI, signer);
-    return transactionContract;
+    const transactionsContract = new ethers.Contract(contractAddress, contractABI, signer);
+    return transactionsContract;
 }
 
 export const TransactionProvider = ({children})=> {   
@@ -28,8 +28,8 @@ export const TransactionProvider = ({children})=> {
     const getAllTransactions = async()=> {
         try{
             if (!ethereum) return alert("please install metamask");
-            const transactionContract = getEthereumContract();
-            const availableTransactions = await transactionContract.getAllTransactions();
+            const transactionsContract = getEthereumContract();
+            const availableTransactions = await transactionsContract.getAllTransactions();
             console.log(availableTransactions);
         }catch (error) {
             console.log(error);
@@ -67,9 +67,9 @@ export const TransactionProvider = ({children})=> {
     const checkIfTransactionsExist = async() => {
         try {
             if (ethereum) {
-                const transactionContract = getEthereumContract();
-                const transactionsCount = await transactionContract.getTransactionCount();   
-                window.localStorage.setItem('transactionCount', transactionsCount)
+                const transactionsContract = getEthereumContract();
+                const transactionCount = await transactionsContract.getTransactionCount();   
+                window.localStorage.setItem('transactionCount', transactionCount)
             }
         } catch (error) {
             console.log(error)
@@ -83,8 +83,8 @@ export const TransactionProvider = ({children})=> {
             try {
             if (ethereum) {
                 const { addressTo, amount, keyword, message } = formData;//access
-                const transactionContract = getEthereumContract();
-                console.log(transactionContract);
+                const transactionsContract = getEthereumContract();
+                console.log(transactionsContract);
                 //calculate curent transactions
                 const parsedAmount = ethers.utils.parseEther(amount);      
                 await ethereum.request({
