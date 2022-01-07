@@ -30,6 +30,9 @@ export const TransactionProvider = ({children})=> {
             if (!ethereum) return alert("please install metamask");
             const transactionsContract = getEthereumContract();
             const availableTransactions = await transactionsContract.getAllTransactions();
+
+            
+            const structuredTransactions = 
             console.log(availableTransactions);
         }catch (error) {
             console.log(error);
