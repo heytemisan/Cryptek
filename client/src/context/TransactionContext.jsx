@@ -123,6 +123,7 @@ export const TransactionProvider = ({children})=> {
     useEffect(() => {
         //afterwards call all functions
         checkIfWalletIsConnected();
+        //check current number of transactions
         checkIfTransactionsExist();
     },[])
 
