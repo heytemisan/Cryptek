@@ -4,9 +4,8 @@ import dummyData from '../utils/dummyData';
 import {shortenAddress} from '../utils/shortenAddress';
 import useFetch from '../hooks/useFetch';
 
-const TransactionCard = ({addressTo, addressFrom, timestamp, message, keyword, amount, url}) => {
-    
-    const gifUrl = useFetch({keyword})
+const TransactionCard = ({ addressTo, addressFrom, timestamp, message, keyword, amount, url }) => {
+    const gifUrl = useFetch({ keyword });
 
     return (
         <div className="
@@ -43,11 +42,11 @@ const TransactionCard = ({addressTo, addressFrom, timestamp, message, keyword, a
                         </>
                     )}            
                 </div>
-                    <img 
-                        src={gifUrl || url} 
-                        alt="gif"
-                        className='w-full h-64 2x:h-96 rounded-md shadow-lg object-cover'
-                        />
+                    <img
+                    src={gifUrl || url}
+                    alt="gifUrl"
+                    className="w-full h-64 2xl:h-96 rounded-md shadow-lg object-cover"
+                    />
                     <div className="bg-black p-3 px-5 w-max rounded-3xl mt-5 shadow-2xl">
                         <p className="text-[#37c7da] font-bold">
                             {timestamp}
@@ -75,7 +74,7 @@ const Transactions = () => {
                 )}
             </div>
             <div className="flex flex-wrap justify-center items-center mt-10">
-                {[...dummyData, ...transactions].reverse().map((transaction, i)=> (
+                {[...transactions].reverse().map((transaction, i)=> (
                     <TransactionCard 
                         key={i}
                         {...transaction}
